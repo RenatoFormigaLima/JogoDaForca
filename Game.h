@@ -17,6 +17,7 @@
 #define EASY_RAND 3
 #define MEDIUM_RAND 5
 #define HARD_RAND 8
+#define CAOTIC_RAND
 
 namespace Game {
 

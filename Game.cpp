@@ -18,7 +18,7 @@ void Game::ShowHud(Game::game* g, int rl) {
 	std::cout << "->Player Name:" << g->player->name << std::endl;
 	std::cout << "->Lifes:" << g->player->lifes << std::endl;
 	std::cout << "->Score:" << g->player->score << std::endl;
-	std::cout << "->Word:";
+
 	//std::cout << "g->word->len = " << g->word->len << std::endl;
 	int cw = g->CurrentWord;
 	GameData::SecretWord aux = g->word[cw];
@@ -27,10 +27,11 @@ void Game::ShowHud(Game::game* g, int rl) {
 		std::cout << "ERRO, CANT SHOW HUD!" << std::endl;
 		exit(1);
 	}
+	std::cout << "->Hint:" << aux.len << " letters" << std::endl;
+	std::cout << "->Word:";
 	GameData::initStr(showWords, aux.len);
 	GameData::fillStr(showWords,'_', aux.len);
-	//std::cout << "AUX LEN:" << aux.len << std::endl;
-	std::cout << "AUX WORD: " << aux.word << std::endl;
+	//std::cout << "AUX WORD: " << aux.word << std::endl;
 	//loop que verifica se uma letra foi acertada ou não e mostra o resultado na tela;
 	for (int i = 0; i < aux.len; i++) {
 		//std::cout <<std::endl << i << std::endl;
@@ -196,7 +197,7 @@ void Game::RandChoseWords(GameData::GameFile* gf, Game::game* g) {
 		exit(1);
 	}
 	for (int i = 0; i < g->randBase; i++) {
-		int Randindex = rand() % g->randBase;
+		int Randindex = rand()%(gf->len);
 		if (Randindex < 0) {
 			std::cout << "ERRO CAN\'T CHOSE THE WORD!" << std::endl;
 			exit(1);

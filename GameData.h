@@ -4,9 +4,9 @@
 #define MAX_CHAR_FOR_EXTRACT 52
 
 #define DEFAULT_LOAD_WORDS 5
-#define DONT_CARE_ABOUT_THIS_ARGUMMENT -1
+#define DONT_CARE_ABOUT_THIS_ARGUMENT -1
 
-#define DEFAULT_PLAYER_NAME (char*)"Teste"
+#define DEFAULT_PLAYER_NAME ((char*)"Teste")
 
 #define LOAD_MODE_ALL 0
 #define LOAD_MODE_N_NUMBER 1
@@ -43,7 +43,8 @@ namespace GameData{
 		int lifes;
 	};
 	
-	GameFile* LoadGameFile(char[],int,int);
+	GameFile* LoadGameFile(char*,int,int);
+	void showGameFileContent(GameFile);
 
 	void SetSecretWord(char*, SecretWord*);
 	SearchLetter searchInSecretWord(char, SecretWord*);

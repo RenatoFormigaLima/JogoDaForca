@@ -204,15 +204,19 @@ void Game::RandChoseWords(GameData::GameFile* gf, Game::game* g) {
 		}
 		GameData::SetSecretWord(gf->content[Randindex], &g->word[i]);
 	}
-
-	g->CurrentWord = rand() % g->randBase;
-
+	if (g->randBase >= gf->len) {
+		g->CurrentWord = rand() % gf->len;
+	}
+	else {
+		g->CurrentWord = rand() % g->randBase;
+	}	
 }
 
 bool Game::CheckIsWin(Game::game* g, int lenOfList) {
 
-	int param = g->word->len;
-
+	int currentWord = g->CurrentWord;
+	int param = g->word[currentWord].len;
+	
 	if (lenOfList == 0) {
 		return false;
 	}
@@ -224,8 +228,10 @@ bool Game::CheckIsWin(Game::game* g, int lenOfList) {
 			//std::cout << " sum = " << quantOfLetters << std::endl;
 		}
 	}
-	std::cout << "len = " << g->word->len << std::endl;
-	std::cout << "RETURN VALUE: " << (quantOfLetters == param) << std::endl;
-	std::cout << " sum = " << quantOfLetters << std::endl;
+	//std::cout << "Word = " << g->word[currentWord].word << std::endl;
+	//std::cout << "len = " << g->word[currentWord].len << std::endl;
+	//std::cout << "RETURN VALUE: " << (quantOfLetters == param) << std::endl;
+	//std::cout << " sum = " << quantOfLetters << std::endl;
+
 	return (quantOfLetters == param);
 }

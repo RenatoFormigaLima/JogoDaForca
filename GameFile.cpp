@@ -12,7 +12,7 @@ Descrição: Função responsável por carregar os dados do arquivo
 
 */
 
-GameData::GameFile* GameData::LoadGameFile(char path[], int NumberofWords, int mode) {
+GameData::GameFile* GameData::LoadGameFile(char* path, int NumberofWords, int mode) {
 
 	
 	GameFile* gf = new GameFile;
@@ -25,7 +25,7 @@ GameData::GameFile* GameData::LoadGameFile(char path[], int NumberofWords, int m
 	gf->path = path;
 	//Abrindo o arquivo
 	std::ifstream file(path);
-	//Criando o dado para a linha, utiliza um número máximo de caracteres
+	//Criando o dado para a linha, utiliza um número máximo de caracteres definido anteriormente
 	char* line = new char[MAX_CHAR_LEN];
 	//Configurando o carregamento dependendo do modo
 	switch (mode)
@@ -86,7 +86,7 @@ GameData::GameFile* GameData::LoadGameFile(char path[], int NumberofWords, int m
 
 			initStr(gf->content[i], LenOfLine); //Inicializa a string
 
-			for (int j = 0; j < LenOfLine && line[j] != ';'; j++) {
+			for (int j = 0; j <= LenOfLine && line[j] != ';'; j++) {
 				gf->content[i][j] = line[j]; //Copia os dados menos o ;
 			}
 			i++;

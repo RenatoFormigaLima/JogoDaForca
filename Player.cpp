@@ -26,7 +26,7 @@ GameData::Player GameData::SetPlayerData(char* name, int score, int lifes) {
 		exit(1);
 	}
 
-	for (int i = 0; i < lenName + 1; i++) {
+	for (int i = 0; i < lenName+1; i++) {
 		newPlayer.name[i] = name[i];
 	}
 

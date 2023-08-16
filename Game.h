@@ -17,7 +17,6 @@
 #define EASY_RAND 3
 #define MEDIUM_RAND 5
 #define HARD_RAND 8
-#define CAOTIC_RAND
 
 namespace Game {
 
@@ -37,8 +36,6 @@ namespace Game {
 	game* InitGame(GameData::GameFile*, GameData::Player*,int);
 	void GameLoop(game*);
 	void RandChoseWords(GameData::GameFile*, game* );
-
-
 
 	void ShowHud(game* , int);
 	char ShowOptions();

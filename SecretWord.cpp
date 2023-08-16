@@ -68,7 +68,7 @@ void GameData::SetSecretWord(char* word, SecretWord* sw) {
 			exit(1);
 		}
 		//initStr(new_sw->word,new_sw->len);
-		for (int i = 0; i < new_sw->len; i++) {
+		for (int i = 0; i <= new_sw->len; i++) {
 			new_sw->word[i] = word[i];
 		}
 
@@ -76,13 +76,14 @@ void GameData::SetSecretWord(char* word, SecretWord* sw) {
 
 	}
 	else {
-		sw->len = getWordLen(word);
+		int wlen = getWordLen(word);
+		sw->len = wlen;
 		//delete[]sw->word;
 		sw->word = new char[sw->len];
 		if (sw->word == nullptr) {
 			std::cout << "ERRO TO COPY THE SECRET WORD!";
 		}
-		for (int i = 0; i <= sw->len; i++) {
+		for (int i = 0; i <= wlen; i++) {
 			sw->word[i] = word[i];
 		}
 	}
